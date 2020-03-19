@@ -132,7 +132,7 @@ const TalkAddEditPanel = ({
                                                 onMouseDown={() =>
                                                     setSpeakerAdd(true)
                                                 }>
-                                                Add a speaker
+                                                {t('talks.addNewSpeaker')}
                                             </OFButton>
                                         }
                                         dataArray={existingSpeakers}
