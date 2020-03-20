@@ -41,7 +41,7 @@ const TalkAddEditPanel = ({
                             title: string()
                                 .trim()
                                 .required(t('talks.fieldTitleRequired')),
-                            trackTitle: string().trim(),
+                            trackTitle: string().ensure(),
                             tags: array().of(string()),
                             startTime: string()
                                 .trim()
@@ -62,6 +62,10 @@ const TalkAddEditPanel = ({
                             }
                         }
                         onSubmit={(values, { resetForm }) => {
+                            // this is a fix until yup ensure() actually change the output, see https://github.com/jaredpalmer/formik/issues/473
+                            values.trackTitle = values.trackTitle
+                                ? values.trackTitle
+                                : ''
                             if (shouldContinueAfterSubmit) {
                                 resetForm()
                             }
